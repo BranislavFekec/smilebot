@@ -1,5 +1,7 @@
 import { generateUUID } from "./uuid.js";
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+</style>
 // Створення нового UUID при завантаженні сторінки
 const currentUUID = generateUUID();
 
@@ -108,17 +110,17 @@ class Chatbox {
           <button class="reload-button"><img src="${reload}" alt="Reload"></button>
         </div>
         <div class="chatbox-header-avatar-wrapper">
-          <img src="${agentAvatarPath}" alt="Agent" class="agent-avatar">
-          <span>${this.chatBotName}</span>
+          <!--<img src="${agentAvatarPath}" alt="Agent" class="agent-avatar">-->
+          <span class="chatBotName">${this.chatBotName}</span>
         </div>
       </div>
       <div id="chatMessages" class="chatbox-messages"></div>
       <div class="chatbox-input">
         <input type="text" id="chatInput" placeholder="Type a message..." />
-        <button id="sendButton"><img src="${sendIconPath}" alt="Send"></button>
+        <button id="sendButton"><img class="send-button" src="${sendIconPath}" alt="Send"></button>
       </div>
       <div class="chatbox-footer">
-        <img src="${logoPath}" alt="logo"/> <span>Powered by <a href="https://chatlix.eu" class="chatbox-footer-link">Chatlix.eu</a></span>
+        <img class="logo" src="${logoPath}" alt="logo"/> <span>Powered by <a href="https://chatlix.eu" class="chatbox-footer-link">Chatlix.eu</a></span>
       </div>
     `;
 
@@ -287,44 +289,62 @@ styles.innerHTML = `
       }
   
       .chatbox-container {
-        width: 300px;
-        height: 400px;
+        width: 450px;
+        height: 600px;
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 30px;
+        right: 30px;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
       }
     
       .chatbox-header {
         background: var(--main-color);
         color: white;
-        padding: 15px;
+        padding: 20px 15px;
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
       }
   
       .close-button{
           background: transparent;
           border: none;
       }
+      .close-button img {
+        width: 17px;
+        height: 17px;
+      }
 
+      .logo
+      {
+       width: 25px;
+      }
       .reload-button {
         background: transparent;
         border: none;
         cursor: pointer;
         margin-right: 10px;
       }
-      
+        .send-button
+        {
+         width: 23px;
+         height: 23px;
+        }
+      .chatBotName
+      {
+        font-size: 18px;
+        font-weight: 500;
+        font-family: Inter;
+      }
       .reload-button img {
-        width: 10px;
-        height: 10px;
+        width: 17px;
+        height: 17px;
       }
 
       .chatbox-header-buttons{
@@ -361,7 +381,7 @@ styles.innerHTML = `
     
       .chatbox-messages {
         flex: 1;
-        padding: 10px;
+        padding: 20px 10px;
         overflow-y: auto;
         background: #fff;
         height: 266px;
@@ -378,9 +398,11 @@ styles.innerHTML = `
         flex: 1;
         padding: 10px;
         border: 1px solid #ccc;
-        border-radius: 3px;
+        border-radius: 4px;
         outline: none;
         box-shadow: none;
+        font-size: 16px;
+        font-family: Inter;
       }
     
       .chatbox-input button {
@@ -392,18 +414,20 @@ styles.innerHTML = `
         border-radius: 3px;
         position: absolute;
         right: 15px;
-        top: 17px;
+        top: 14px;
       }
     
       .chatbox-footer {
-        padding: 10px;
+        padding: 0px 10px 12px 10px;
         text-align: center;
         align-items: center;
         display: flex;
         margin: 0 auto;
-        font-size: 12px;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: Inter;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
       }
   
       .chatbox-footer-link{
@@ -432,27 +456,29 @@ styles.innerHTML = `
     
       .chatbox-message.user {
         text-align: right;
-        background: #eee;
+        background: #F8F8F8;
         color: #333;
-        padding: 5px 10px;
-        border-radius: 10px;
+        padding: 8px;
+        border-radius: 4px;
         margin-bottom: 12px;
         max-width: 70%;
         align-self: flex-end;
-        font-size: 12px;
+        font-size: 15px;
+        font-family: Inter;
       }
       
       .chatbox-message.bot {
         text-align: left;
         background: var(--main-color);
         color: white;
-        padding: 5px 10px;
-        border-radius: 10px;
+        padding: 8px;
+        border-radius: 4px;
         margin-bottom: 12px;
         min-width: 15px;
         max-width: fit-content;
         align-self: flex-start;
-        font-size: 12px;
+        font-size: 15px;
+        font-family: Inter;
       }
       
 
@@ -460,12 +486,12 @@ styles.innerHTML = `
         background: transparent;
         color: white;
         border: 1px solid var(--main-color);
-        padding: 5px 10px;
+        padding: 7px 13px;
         color: var(--main-color);
-        margin: 5px;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 15px;
+          font-family: Inter;
       }
 
       .typing::after {
@@ -492,8 +518,8 @@ styles.innerHTML = `
       
 
       .bot-icon {
-        width: 30px; /* Розмір іконки */
-        height: 30px; /* Розмір іконки */
+        width: 35px; /* Розмір іконки */
+        height: 35px; /* Розмір іконки */
         margin-right: 10px; /* Відступ від повідомлення */
         border-radius: 50%;
       }
