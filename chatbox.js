@@ -413,13 +413,13 @@ styles.innerHTML = `
     
       .chatbox-chat-button {
         position: fixed;
-        bottom: 10px;
-        right: 10px;
+        bottom: 30px;
+        right: 30px;
         background: var(--main-color);
         color: white;
         border: none;
-        height: 61px;
-        width: 61px;
+        height: 75px;
+        width: 75px;
         border-radius: 50%;
         display: flex;
         flex-direction: column;
